@@ -20,10 +20,10 @@
 body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  height: 100dvh;
   color: white;
   background-color: var(--color-brand-black);
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* Subtle Flowing Gradient Background */
@@ -43,7 +43,7 @@ body {
   background: linear-gradient(-45deg, #050505, #14040b, #2b081a, #000000);
   background-size: 400% 400%;
   animation: gradientBg 15s ease infinite;
-  min-height: 100vh;
+  height: 100dvh;
   width: 100%;
 }
 

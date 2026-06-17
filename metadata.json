@@ -1,6 +1,8 @@
 {
-  "name": "",
-  "description": "",
+  "name": "SilStore PG link-in-bio",
+  "description": "Uma página de links elegantes e exclusivos para a SilStore PG com design luxuoso, animações e contato direto.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

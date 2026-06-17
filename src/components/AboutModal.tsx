@@ -29,28 +29,28 @@ export function AboutModal({ isOpen, onClose }: AboutModalProps) {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="flex flex-col items-center text-center space-y-6"
+        className="flex flex-col items-center text-center space-y-4"
       >
         <motion.div 
           variants={itemVariants}
-          className="relative w-28 h-28 rounded-full bg-gradient-to-br from-[var(--color-brand-pink)] to-[#000] p-[2px] flex-shrink-0 shadow-[0_0_30px_rgba(209,28,117,0.3)]"
+          className="relative w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-[var(--color-brand-pink)] to-[#000] p-[2px] flex-shrink-0 shadow-[0_0_30px_rgba(209,28,117,0.3)]"
         >
           <div className="w-full h-full bg-[#121212] rounded-full flex items-center justify-center overflow-hidden">
              <img src="/logo.png" alt="SilStore PG Logo" className="w-full h-full object-cover scale-110" onError={(e) => { e.currentTarget.src = "https://placehold.co/200x200/121212/d11c75.png?text=SilStore" }} />
           </div>
         </motion.div>
         
-        <div className="space-y-5">
+        <div className="space-y-3 sm:space-y-5">
           <motion.h3 
             variants={itemVariants}
-            className="text-2xl sm:text-3xl font-heading font-bold text-gradient-animated"
+            className="text-xl sm:text-3xl font-heading font-bold text-gradient-animated"
           >
             SilStore PG
           </motion.h3>
 
           <motion.p 
             variants={itemVariants}
-            className="text-white/80 leading-relaxed font-sans text-sm sm:text-base px-2"
+            className="text-white/80 leading-relaxed font-sans text-xs sm:text-base px-2"
           >
             Nascemos para elevar o seu estilo. Somos a união perfeita entre a <span className="text-[var(--color-brand-pink)] font-semibold">sofisticação</span> e o <span className="text-[var(--color-brand-pink)] font-semibold">luxo acessível</span>.
             Cada peça é escolhida a dedo para celebrar a sua melhor versão.
