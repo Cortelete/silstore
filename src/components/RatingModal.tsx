@@ -12,7 +12,6 @@ export function RatingModal({ isOpen, onClose }: RatingModalProps) {
   const [rating, setRating] = useState<number>(0);
   const [hoveredRating, setHoveredRating] = useState<number>(0);
   const [step, setStep] = useState<1 | 2>(1);
-  const [feedback, setFeedback] = useState('');
 
   const handleRate = (value: number) => {
     setRating(value);
@@ -22,13 +21,6 @@ export function RatingModal({ isOpen, onClose }: RatingModalProps) {
     } else {
       setTimeout(() => setStep(2), 500);
     }
-  };
-
-  const submitFeedback = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Use formsubmit.co or similar mechanism when integrated later
-    alert("Avaliação enviada com sucesso! Agradecemos o seu feedback.");
-    onClose();
   };
 
   return (
@@ -63,13 +55,32 @@ export function RatingModal({ isOpen, onClose }: RatingModalProps) {
           </div>
         </div>
       ) : (
-        <form onSubmit={submitFeedback} className="space-y-4">
+        <form action="https://formsubmit.co/sil27sil@hotmail.com" method="POST" className="space-y-4">
           <p className="text-white/80 font-sans text-sm mb-4">
             Notamos que sua avaliação foi de {rating} estrela{rating > 1 ? 's' : ''}. O que houve e como podemos melhorar?
           </p>
+          <input type="hidden" name="_subject" value="Novo Feedback - SILStorePG" />
+          <input type="hidden" name="Avaliacao" value={`${rating} estrelas`} />
+          <input type="hidden" name="_captcha" value="false" />
+          
+          <input 
+            type="text" 
+            name="name" 
+            required 
+            placeholder="Seu nome"
+            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-brand-pink)] transition-all font-sans text-sm"
+          />
+          
+          <input 
+            type="email" 
+            name="email" 
+            required 
+            placeholder="Seu e-mail"
+            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-brand-pink)] transition-all font-sans text-sm"
+          />
+
           <textarea 
-            value={feedback}
-            onChange={(e) => setFeedback(e.target.value)}
+            name="message"
             rows={4}
             required
             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-brand-pink)] transition-all resize-none font-sans text-sm"
@@ -79,7 +90,7 @@ export function RatingModal({ isOpen, onClose }: RatingModalProps) {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full bg-[var(--color-brand-pink)] hover:bg-[var(--color-brand-pink-dark)] text-white font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors mt-2"
+            className="w-full bg-gradient-to-r from-[var(--color-brand-pink)] to-[var(--color-brand-pink-dark)] hover:opacity-90 text-white font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all mt-2 shadow-[0_0_15px_rgba(209,28,117,0.3)]"
           >
             <Send size={18} />
             Enviar Feedback

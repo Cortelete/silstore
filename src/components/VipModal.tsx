@@ -1,5 +1,5 @@
 import { Modal } from './Modal';
-import { Crown, Sparkles, AlertCircle } from 'lucide-react';
+import { Crown, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface VipModalProps {
@@ -24,26 +24,26 @@ export function VipModal({ isOpen, onClose }: VipModalProps) {
         <div className="space-y-3">
           <h3 className="text-lg sm:text-xl font-heading font-bold text-gradient-animated flex items-center justify-center gap-2">
             <Sparkles size={16} className="text-[var(--color-brand-pink)]" />
-            Em Breve
+            Faça parte
             <Sparkles size={16} className="text-[var(--color-brand-pink)]" />
           </h3>
           <p className="text-white/80 font-sans text-xs sm:text-sm px-2">
-            Estamos preparando algo <span className="text-[var(--color-brand-pink)] font-semibold">exclusivo</span> para você. 
-            Nosso grupo VIP trará benefícios únicos, novidades em primeira mão e ofertas especiais.
+            Acesse nosso grupo <span className="text-[var(--color-brand-pink)] font-semibold">exclusivo</span> e tenha acesso a benefícios únicos, novidades em primeira mão e ofertas especiais para nossas clientes VIP.
           </p>
         </div>
 
-        <motion.div 
-          className="w-full bg-white/5 border border-white/10 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center gap-2 mt-2"
+        <motion.a 
+          href="https://chat.whatsapp.com/FiDjkdo1B8t8iRxGbCrhLE?s=sw&p=a&mlu=2"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full bg-gradient-to-r from-[var(--color-brand-pink)] to-[var(--color-brand-pink-dark)] hover:opacity-90 active:scale-[0.98] transition-all rounded-2xl py-3 px-4 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(209,28,117,0.3)] mt-2 font-medium text-white"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <AlertCircle size={18} className="text-white/50" />
-          <p className="text-[10px] sm:text-xs text-white/50 font-medium tracking-wide uppercase">
-            Aguarde o Lançamento
-          </p>
-        </motion.div>
+          <Crown size={18} />
+          <span>Entrar no Grupo VIP</span>
+        </motion.a>
 
       </div>
     </Modal>
