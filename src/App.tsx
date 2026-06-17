@@ -1,0 +1,123 @@
+import { useState } from 'react';
+import { motion } from 'motion/react';
+import { Instagram, MessageCircle, MapPin, Star, Sparkles } from 'lucide-react';
+import { LinkCard } from './components/LinkCard';
+import { AboutModal } from './components/AboutModal';
+import { ContactModal } from './components/ContactModal';
+import { LocationModal } from './components/LocationModal';
+import { RatingModal } from './components/RatingModal';
+import { DeveloperModal } from './components/DeveloperModal';
+
+export default function App() {
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isLocationOpen, setIsLocationOpen] = useState(false);
+  const [isRatingOpen, setIsRatingOpen] = useState(false);
+  const [isDevOpen, setIsDevOpen] = useState(false);
+  const [spinLogo, setSpinLogo] = useState(false);
+
+  const handleLogoClick = () => {
+    setSpinLogo(true);
+    setTimeout(() => {
+      setIsAboutOpen(true);
+      setSpinLogo(false);
+    }, 800); // Wait for the animation to mostly finish
+  };
+
+  return (
+    <div className="relative min-h-screen bg-animated-gradient flex flex-col items-center justify-between font-sans overflow-hidden">
+      
+      {/* Decorative ambient blobs */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[var(--color-brand-pink)]/10 blur-[100px]" />
+         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[var(--color-brand-pink)]/5 blur-[120px]" />
+      </div>
+
+      <main className="w-full max-w-[480px] px-4 py-8 sm:py-12 flex flex-col items-center justify-center relative z-10 mx-auto flex-1 h-full">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-full bg-[#121212]/60 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.5)] flex flex-col items-center"
+        >
+          {/* Profile Section */}
+          <div className="flex flex-col items-center mb-8 w-full">
+            <button 
+              onClick={handleLogoClick}
+              className={`w-28 h-28 sm:w-32 sm:h-32 rounded-full mb-6 p-1 bg-gradient-to-br from-[var(--color-brand-pink)] via-white/20 to-[#080808] focus:outline-none ${spinLogo ? 'coin-spin' : ''}`}
+              aria-label="Sobre SilStore PG"
+            >
+              <div className="w-full h-full rounded-full bg-[#121212] overflow-hidden shadow-[0_0_25px_rgba(209,28,117,0.3)]">
+                 <img 
+                   src="/logo.png" 
+                   alt="SilStore PG - Logo" 
+                   className="w-full h-full object-cover" 
+                   onError={(e) => { e.currentTarget.src = "https://placehold.co/200x200/080808/d11c75.png?text=SilStore" }}
+                  />
+              </div>
+            </button>
+
+            <h1 className="text-3xl sm:text-4xl font-heading font-bold text-gradient-animated text-center tracking-tight mb-2">
+              SilStore PG
+            </h1>
+            <p className="text-sm sm:text-base text-white/70 font-medium text-center tracking-widest uppercase">
+              Elegância & Luxo
+            </p>
+          </div>
+
+          {/* Links Section */}
+          <div className="w-full flex flex-col items-center space-y-1">
+              <LinkCard 
+                icon={<Instagram size={22} />}
+                title="Instagram"
+                subtitle="Siga para novidades e estilo"
+                href="https://www.instagram.com/silstorepg"
+              />
+              
+              <LinkCard 
+                icon={<MessageCircle size={22} />}
+                title="Contato"
+                subtitle="Looks, Acessórios e Dúvidas"
+                onClick={() => setIsContactOpen(true)}
+              />
+              
+              <LinkCard 
+                icon={<MapPin size={22} />}
+                title="Localização"
+                subtitle="Vem nos visitar em Ponta Grossa"
+                onClick={() => setIsLocationOpen(true)}
+              />
+              
+              <LinkCard 
+                icon={<Star size={22} />}
+                title="Avalie-nos"
+                subtitle="O que achou da sua experiência?"
+                onClick={() => setIsRatingOpen(true)}
+              />
+          </div>
+        </motion.div>
+
+      </main>
+
+      {/* Footer */}
+      <footer className="w-full py-6 relative z-10 text-center flex flex-col items-center justify-center">
+        <button 
+          onClick={() => setIsDevOpen(true)}
+          className="text-xs sm:text-sm text-white/40 hover:text-white/80 transition-colors flex items-center gap-1.5 focus:outline-none group px-4 py-2"
+        >
+          Desenvolvido por InteligenciArte.IA
+          <Sparkles size={14} className="text-[var(--color-brand-pink)] group-hover:animate-pulse" />
+        </button>
+      </footer>
+
+      {/* Modals */}
+      <AboutModal isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      <LocationModal isOpen={isLocationOpen} onClose={() => setIsLocationOpen(false)} />
+      <RatingModal isOpen={isRatingOpen} onClose={() => setIsRatingOpen(false)} />
+      <DeveloperModal isOpen={isDevOpen} onClose={() => setIsDevOpen(false)} />
+
+    </div>
+  );
+}

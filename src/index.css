@@ -1,0 +1,102 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap');
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-pink: #d11c75;
+  --color-brand-pink-dark: #991355;
+  --color-brand-black: #080808;
+  --color-brand-dark: #121212;
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: white;
+  background-color: var(--color-brand-black);
+  overflow-x: hidden;
+}
+
+/* Subtle Flowing Gradient Background */
+@keyframes gradientBg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-animated-gradient {
+  background: linear-gradient(-45deg, #050505, #14040b, #2b081a, #000000);
+  background-size: 400% 400%;
+  animation: gradientBg 15s ease infinite;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Text Gradient Animation */
+@keyframes textShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.text-gradient-animated {
+  background: linear-gradient(
+    to right,
+    #ff6bb5 20%,
+    #ffb6db 30%,
+    #e83187 70%,
+    #ff6bb5 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: textShine 4s linear infinite;
+}
+
+/* Modals global scroll styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: #d11c75;
+  border-radius: 10px;
+}
+
+/* Coin spin animation */
+@keyframes coinSpinZoom {
+  0% {
+    transform: perspective(600px) rotateY(0deg) scale(1);
+  }
+  50% {
+    transform: perspective(600px) rotateY(1080deg) scale(1.3);
+  }
+  100% {
+    transform: perspective(600px) rotateY(2160deg) scale(1);
+  }
+}
+
+.coin-spin {
+  animation: coinSpinZoom 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
