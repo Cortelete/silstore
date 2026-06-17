@@ -47,7 +47,7 @@ export default function App() {
           <div className="flex flex-col items-center mb-4 sm:mb-8 w-full">
             <button 
               onClick={handleLogoClick}
-              className={`w-20 h-20 sm:w-28 sm:h-28 rounded-full mb-3 sm:mb-6 p-1 bg-gradient-to-br from-[var(--color-brand-pink)] via-white/20 to-[#080808] focus:outline-none ${spinLogo ? 'coin-spin' : ''}`}
+              className={`w-20 h-20 sm:w-28 sm:h-28 rounded-full mb-0 sm:mb-0 p-1 bg-gradient-to-br from-[var(--color-brand-pink)] via-white/20 to-[#080808] focus:outline-none relative z-10 ${spinLogo ? 'coin-spin' : ''}`}
               aria-label="Sobre SilStore PG"
             >
               <div className="w-full h-full rounded-full bg-[#121212] overflow-hidden shadow-[0_0_25px_rgba(209,28,117,0.3)]">
@@ -60,10 +60,12 @@ export default function App() {
               </div>
             </button>
 
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-gradient-animated text-center tracking-tight mb-1 sm:mb-2">
-              SilStore PG
-            </h1>
-            <p className="text-xs sm:text-sm lg:text-base text-white/70 font-medium text-center tracking-widest uppercase">
+            <img 
+              src="/logofonte.png" 
+              alt="SilStore PG" 
+              className="h-32 sm:h-48 lg:h-56 -mt-6 sm:-mt-10 -mb-4 sm:-mb-6 object-contain w-auto px-4"
+            />
+            <p className="text-xs sm:text-sm lg:text-base text-white/70 font-medium text-center tracking-widest uppercase -mt-2 sm:-mt-4">
               Elegância & Luxo
             </p>
           </div>
