@@ -66,7 +66,7 @@ export default function App() {
               className="h-32 sm:h-48 lg:h-56 -mt-6 sm:-mt-10 -mb-4 sm:-mb-6 object-contain w-auto px-4"
             />
             <p className="text-xs sm:text-sm lg:text-base text-white/70 font-medium text-center tracking-widest uppercase -mt-2 sm:-mt-4">
-              Elegância & Luxo
+              Variedade e Estilo
             </p>
           </div>
 
